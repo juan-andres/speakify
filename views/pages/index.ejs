@@ -1,1 +1,25 @@
-<body> Speakify - learn the song name and artist before anyone else </body/>
+<head>
+  <script src="vendor/spotify.js"></script>
+</head>
+<body>
+  Speakify - learn the song name and artist before anyone else
+
+  <script>
+    var spotifyApi = new SpotifyWebApi();
+    
+    var accessToken = window.location.hash.split('&')[0].split('=')[1];
+
+    spotifyApi.setAccessToken(accessToken);
+    spotifyApi.getPlaylist('juanandresnyc', '1mC6vTTh2lDUuXsHGueJdn')
+      .then(function(data) {
+        console.log(data);
+      }, function(err) {
+
+        console.log('frontend', err);
+       // window.location = "/login";
+
+      });
+
+  </script>
+</body>
+
